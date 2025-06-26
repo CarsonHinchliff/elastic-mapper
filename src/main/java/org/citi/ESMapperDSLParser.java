@@ -6,9 +6,14 @@ import com.jfinal.template.Template;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.citi.annotation.*;
+import org.citi.constant.Constants;
+import org.citi.directive.CompactDirective;
 import org.citi.directive.DSLDirective;
 import org.citi.directive.NamespaceDirective;
+import org.citi.directive.TripDirective;
 import org.citi.executor.*;
+import org.citi.filter.directive.FilterDirective;
+import org.citi.filter.directive.SortDirective;
 import org.citi.metadata.MethodMetadata;
 import org.citi.metadata.NamespaceNode;
 import org.citi.parser.*;
@@ -23,7 +28,6 @@ import org.springframework.util.FileCopyUtils;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.ParameterizedType;
@@ -39,7 +43,7 @@ import java.util.Map;
  */
 @Slf4j
 public class ESMapperDSLParser {
-    private final Engine engine = Engine.create("ESIBatis");
+    private final Engine engine = Engine.create(Constants.EngineConstants.ENGINE);
     private final Map<String, NamespaceNode> namespaceNodeMap;
     private final Map<Method, MapperMethodExecutor> mapperMethodExecutorMap;
     private ApplicationContext applicationContext;
@@ -48,7 +52,11 @@ public class ESMapperDSLParser {
         this.engine.setToClassPathSourceFactory();
         this.engine.addDirective("namespace", NamespaceDirective.class);
         this.engine.addDirective("dsl", DSLDirective.class);
-        // other directives, TODO
+        // other directives
+        this.engine.addDirective("compact", CompactDirective.class);
+        this.engine.addDirective("trip", TripDirective.class);
+        this.engine.addDirective("filters", FilterDirective.class);
+        this.engine.addDirective("sorts", SortDirective.class);
 
         //share methods
         this.engine.addSharedMethod(ShareUtils.class);
