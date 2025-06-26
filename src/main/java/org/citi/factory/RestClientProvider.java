@@ -12,7 +12,7 @@ public class RestClientProvider {
     private RestClientProxy restClientProxy;
 
     private RestClientProvider(){
-        throw new IllegalStateException("Utility class");
+
     }
 
     public RestClient getRestClient() {
@@ -34,7 +34,7 @@ public class RestClientProvider {
     private static class SingletonHolder {
         private static final RestClientProvider INSTANCE = new RestClientProvider();
         private SingletonHolder() {
-            throw new IllegalStateException("Utility class");
+
         }
     }
 }

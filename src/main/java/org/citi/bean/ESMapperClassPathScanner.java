@@ -2,6 +2,7 @@ package org.citi.bean;
 
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
@@ -65,5 +66,10 @@ public class ESMapperClassPathScanner extends ClassPathBeanDefinitionScanner {
             beanDefinition.setLazyInit(lazyInit);
         }
         return beanDefinitionHolders;
+    }
+
+    @Override
+    protected boolean isCandidateComponent(AnnotatedBeanDefinition beanDefinition) {
+        return beanDefinition.getMetadata().hasAnnotation(this.annotationClass.getName());
     }
 }

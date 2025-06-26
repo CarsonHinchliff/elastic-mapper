@@ -12,11 +12,11 @@ public class ESMapperContext {
     private final ThreadLocal<String> CURRENT_INDEX = new ThreadLocal<>();
 
     private ESMapperContext(){
-        throw new IllegalStateException("Utility class");
+
     }
 
     public static ESMapperContext getInstance(){
-        return ESMapperContext.getInstance();
+        return SingletonHolder.INSTANCE;
     }
 
     public <T> T run(String index, Supplier<T> supplier){
@@ -47,6 +47,6 @@ public class ESMapperContext {
 
     private static class SingletonHolder{
         private static final ESMapperContext INSTANCE = new ESMapperContext();
-        private SingletonHolder(){ throw new IllegalStateException("Utility class"); }
+        private SingletonHolder(){  }
     }
 }

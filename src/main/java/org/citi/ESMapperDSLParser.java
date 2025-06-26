@@ -127,7 +127,7 @@ public class ESMapperDSLParser {
         ESMapper esMapper = clazz.getAnnotation(ESMapper.class);
         String namespace = clazz.getName();
         String defaultIndex = esMapper.defaultIndex();
-        if (StringUtils.isNotBlank(defaultIndex)){
+        if (StringUtils.isNotBlank(esMapper.namespace())){
             namespace = esMapper.namespace();
         }
 
@@ -277,7 +277,7 @@ public class ESMapperDSLParser {
     private static class SingletonHolder {
         private static final ESMapperDSLParser INSTANCE = new ESMapperDSLParser();
         private SingletonHolder() {
-            throw new IllegalStateException("Utility class");
+
         }
     }
 }

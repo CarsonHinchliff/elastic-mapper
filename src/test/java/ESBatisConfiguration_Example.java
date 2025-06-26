@@ -11,15 +11,27 @@
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
 //
+
+import org.citi.ESBatisConfiguration;
+import org.citi.bean.ESMapperScan;
+import org.citi.es.ESRestClientProperties;
+
 ///**
 // * @author Carson
 // * @created 2025/6/12 星期四 下午 06:45
 // */
-//@ESMapperScan(basePackages = "org.citi.**.*.dsl", dslPath = "classpath*:dsl/*.dsl")
 //@Configuration
-//public class ESBatisConfiguration_Example  {
+//@ESMapperScan(basePackages = "org.example.mapper", dslPath = "classpath*:dsl/*.dsl")
+//public class ESConfiguration {
+//
 //    @Bean
-//    public ESBatisConfiguration esBatisConfiguration(ESRestClientProperties properties){
+//    @ConfigurationProperties("elastic-search.client")
+//    public ESRestClientProperties esRestClientProperties() {
+//        return new ESRestClientProperties();
+//    }
+//
+//    @Bean
+//    public ESBatisConfiguration esBatisConfiguration(ESRestClientProperties properties) {
 //        return new ESBatisConfiguration(properties);
 //    }
 //}
