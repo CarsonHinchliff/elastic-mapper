@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'idea'
+    id 'maven-publish'
+}
+
+group = 'org.citi'
+version projectVersion
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+javadoc.options.encoding('UTF-8')
+
+//tasks.withType(JavaCompile) {
+//    options.fork(true)
+//    options.compilerArgs.add("-parameters")
+//}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly("org.springframework.boot:spring-boot-starter:${springBootVersion}")
+    api "com.jfinal:enjoy:5.0.3"
+    api "co.elastic.clients:elasticsearch-java:${elasticSearchVersion}"
+    implementation("commons-collections:commons-collections:3.2.2")
+    implementation("org.apache.commons:commons-collections4:4.4")
+    implementation("org.apache.commons:commons-lang3:3.12.0")
+    compileOnly("org.projectlombok:lombok:1.18.24")
+    annotationProcessor("org.projectlombok:lombok:1.18.22")
+    implementation("com.alibaba:fastjson:1.2.83")
+}
+
+test {
+    useJUnitPlatform()
+}
