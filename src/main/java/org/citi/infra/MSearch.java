@@ -40,6 +40,7 @@ public class MSearch {
         try {
             MSearchContext context = getContext();
             String dsl = context.getMSearchStatement().toString();
+            log.info("dsl:\r\n: {}", dsl);
             Request request = new Request("GET", "_msearch");
             HttpEntity entity = new NStringEntity(dsl, ContentType.APPLICATION_JSON);
             request.setEntity(entity);

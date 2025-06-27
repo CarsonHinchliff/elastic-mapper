@@ -57,7 +57,7 @@ public class MapperGetExecutor implements MapperMethodExecutor {
     private Object mSearchProcess(MSearchContext mSearchContext, String index, String dsl, RestClient restClient){
         mSearchContext.setRestClient(restClient);
         String targetDSL = StringUtils.trim(dsl).replaceAll("[\r\n]", "");
-        mSearchContext.getMSearchStatement().append("{\"index\": ").append(index)
+        mSearchContext.getMSearchStatement().append("{\"index\": ").append("\"").append(index)
                 .append("\"").append("}").append("\r\n").append(targetDSL).append("\r\n");
         mSearchContext.getMethodMetadata().add(this.methodMetadata);
         Future future = new Future();
