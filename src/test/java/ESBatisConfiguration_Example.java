@@ -1,9 +1,9 @@
 //package org.citi;
 //
-//import org.citi.bean.ESMapperScan;
-//import org.citi.es.ESRestClientBuilder;
-//import org.citi.es.ESRestClientProperties;
-//import org.citi.factory.ESMapperFactory;
+//import org.citi.elasticmapper.bean.ESMapperScan;
+//import org.citi.elasticmapper.es.ESRestClientBuilder;
+//import org.citi.elasticmapper.es.ESRestClientProperties;
+//import org.citi.elasticmapper.factory.ESMapperFactory;
 //import org.elasticsearch.client.RestClient;
 //import org.springframework.beans.BeansException;
 //import org.springframework.context.ApplicationContext;
@@ -11,10 +11,6 @@
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
 //
-
-import org.citi.ESBatisConfiguration;
-import org.citi.bean.ESMapperScan;
-import org.citi.es.ESRestClientProperties;
 
 ///**
 // * @author Carson
